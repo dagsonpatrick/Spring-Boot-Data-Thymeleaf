@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Inserção Aluno</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+	
+	<div th:replace="fragmentos/fragmentos :: header"></div>
+	
+	<main role="main" class="container">
+	
+	<form  class="form-horizontal" action="/alunos/inserir" method="post" th:object="${aluno}">
+	
+	<div class="container">	
+		<div class="row">
+			<div class="col-md-8">
+				<div class="form-group">
+					<h1>Cadastrar novo aluno</h1>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="txt-nome">Nome:</label>
+					<input type="text" id="txt-nome" class="form-control" th:field="*{nome}" required="required"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="txt-idade">Idade:</label>
+					<input type="number" id="txt-idade" class="form-control" th:field="*{idade}" required="required" min="1"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="txt-instituicao">Instituição:</label>
+					<select class="form-control" th:field="*{instituicao.id}">
+						<option th:each="instituicao: ${instituicoes}" 	th:value="${instituicao.id}" th:text="${instituicao.nome}">	</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<input type="submit"  class="btn btn-outline-success" value="Salvar" />
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	</form>
+	
+	</main>	
+	
+	<div th:replace="fragmentos/fragmentos :: footer"></div>
+	<script type="text/javascript" src="/webjars/popper.js/1.14.3/umd/popper.min.js" ></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/webjars/jquery/3.0.0/jquery.min.js" ></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Lista Instituições</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+	
+	<div th:replace="fragmentos/fragmentos :: header"></div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="form-group">
+					<h1>Lista de instituições cadastradas</h1>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<a href="/instituicoes/inserir"	class="btn btn-outline-success">Nova Instituição</a>
+				</div>
+			</div>
+		</div>
+		
+		<table class="table" id="tbl-instituicoes">
+			<thead>
+				<th>ID</th>
+				<th>Nome da Instituição</th>
+				<th>Endereço</th>
+				<th>Ações</th>
+			</thead>
+			<tbody>		
+				<tr th:each="instituicao: ${instituicoes}">
+					<td th:text="${instituicao.id}"></td>
+					<td th:text="${instituicao.nome}"></td>
+					<td th:text="${instituicao.endereco}"></td>
+					<td><a th:href="@{/instituicoes/editar/{id}(id=${instituicao.id})}" class="btn btn-outline-primary">Editar</a>
+						<a th:href="@{/instituicoes/excluir/{id}(id=${instituicao.id})}" class="btn btn-outline-danger">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div th:replace="fragmentos/fragmentos :: footer"></div>
+	
+<!-- 	<script type="text/javascript" src="/webjars/popper.js/1.14.3/umd/popper.min.js" ></script> -->
+<!-- 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js" ></script> -->
+	<script type="text/javascript" src="/webjars/jquery/3.1.1-1/jquery.min.js" ></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btn-pesquisar').click(function(){
+				$.ajax({
+					method: 'GET',
+					url: '/instituicoes/pesquisarPorNome/' + $('#txt-pesquisar').val(),
+					success: function(data){			
+						$('#tbl-instituicoes tbody > tr').remove();
+						$.each(data, function(){
+							$('#tbl-instituicoes tbody').append(
+								'<tr>' +
+								   '<td>' + this.id + '</td>' +
+									'<td>' + this.nome + '</td>' +
+									'<td>' + this.endereco + '</td>' +
+									'<td>' +
+									'  		<a class="btn btn-outline-primary" href="/instituicoes/editar/' + this.id + '">Editar</a>' +
+									'  		<a class="btn btn-outline-danger" href="/instituicoes/excluir/' + this.id + '">Excluir</a> ' +
+									'</td>' +
+								'</tr>'
+							);
+						});
+						
+					},
+					error: function(){
+						alert('Houve um erro de Requisicao!');
+					}
+				});
+				
+			});
+			
+		});
+	
+	</script>
+</body>
+</html>
