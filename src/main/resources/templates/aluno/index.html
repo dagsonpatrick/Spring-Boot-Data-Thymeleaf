@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Lista de Alunos</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+	
+	<div th:replace="fragmentos/fragmentos :: header"></div>
+	
+	<main role="main" class="container">
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="form-group">
+					<h1>Lista de alunos cadastrados</h1>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<a href="/alunos/inserir"	class="btn btn-outline-success">Novo Aluno</a>
+				</div>
+			</div>
+		</div>
+		
+		<table class="table" id="tbl-alunos">
+			<thead>
+				<th>ID</th>
+				<th>Nome do Aluno</th>
+				<th>Idade</th>
+				<th>Instituição</th>
+				<th>Ações</th>
+			</thead>
+			<tbody>		
+				<tr th:each="aluno: ${alunos}">
+					<td th:text="${aluno.id}"></td>
+					<td th:text="${aluno.nome}"></td>
+					<td th:text="${aluno.idade}"></td>
+					<td th:text="${aluno.instituicao.nome}"></td>
+					<td><a th:href="@{/alunos/editar/{id}(id=${aluno.id})}" class="btn btn-outline-primary">Editar</a>
+						<a th:href="@{/alunos/excluir/{id}(id=${aluno.id})}" class="btn btn-outline-danger">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	</main>	
+	
+	<div th:replace="fragmentos/fragmentos :: footer"></div>
+	
+<!-- 	<script type="text/javascript" src="/webjars/popper.js/1.14.3/umd/popper.min.js" ></script> -->
+<!-- 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js" ></script> -->
+	<script type="text/javascript" src="/webjars/jquery/3.1.1-1/jquery.min.js" ></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btn-pesquisar').click(function(){
+				$.ajax({
+					method: 'GET',
+					url: '/alunos/pesquisarPorNome/' + $('#txt-pesquisar').val(),
+					success: function(data){			
+						$('#tbl-alunos tbody > tr').remove();
+						$.each(data, function(){
+							$('#tbl-alunos tbody').append(
+								'<tr>' +
+								   '<td>' + this.id + '</td>' +
+									'<td>' + this.nome + '</td>' +
+									'<td>' + this.idade + '</td>' +
+									'<td>' + this.instituicao.nome + '</td>' +
+									'<td>' +
+									'  		<a class="btn btn-outline-primary" href="/instituicoes/editar/' + this.id + '">Editar</a>' +
+									'  		<a class="btn btn-outline-danger" href="/instituicoes/excluir/' + this.id + '">Excluir</a> ' +
+									'</td>' +
+								'</tr>'
+							);
+						});
+						
+					},
+					error: function(){
+						alert('Houve um erro de Requisicao!');
+					}
+				});
+				
+			});
+			
+		});
+	
+	</script>
+</body>
+</html>
