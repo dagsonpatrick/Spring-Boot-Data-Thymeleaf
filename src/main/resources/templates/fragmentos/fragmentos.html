@@ -3,82 +3,60 @@
 <head>
 <meta charset="UTF-8"></meta>
 <title>Spring Boot</title>
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
-<style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: red;
-  color: white;
-  text-align: center;
-}
-</style>
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css"/>
 </head>
 <body>
-
-<!-- ** HEADER ** -->
-<div style="width: 100%" th:fragment="header">
-	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5e00a3;" >
-	
-		<a class="navbar-brand" href="/home/">Spring Boot</a>
-		
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-	
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				
-				<li class="nav-item dropdown">
-					<a	class="nav-link dropdown-toggle" href="/instituicoes/index" id="navbarDropdown"
+	<!-- ** HEADER ** -->
+	<div style="width: 100%" th:fragment="header">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5e00a3;" >
+			<a class="navbar-brand" href="/home/">Spring Boot</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">		
+					<li class="nav-item dropdown">
+						<a	class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> Instituições
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/instituicoes/index">Listar</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/instituicoes/inserir">Cadastrar</a>
+						</div>
+					</li>			
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="/alunos/index" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> Instituições
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="/instituicoes/index">Listar</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="">Cadastrar</a>
-					</div>
-				</li>
-				
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="/alunos/index" id="navbarDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Aluno </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="">Listar</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="">Cadastrar</a>			 
-					</div>
-				</li>
-		
-			</ul>
-	
-			<input class="form-control mr-sm-2" type="search" placeholder="Search"	aria-label="Search" id="txt-pesquisar" name="txt-pesquisar"/>
-			<button class="btn btn-outline-success my-2 my-sm-0" id="btn-pesquisar">Search</button>
-	
-		</div>
-	</nav>
-</div>
-
-
-
-<!-- ** FOOTER ** -->
-<div style="width: 100%" th:fragment="footer">
-<footer class="footer" style="background-color: #5e00a3; position: fixed;  left: 0;  bottom: 0;  width: 100%; color: white;  text-align: center;" >
-	<div class="container" >
-		<span style="color: #FFFFFF;">Developer: Dagson Souza  <a href="mailto:dagson.souza@alertsystem.com.br">dagson.souza@alertsystem.com.br</a></span>		 
+						aria-expanded="false"> Aluno </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/alunos/index">Listar</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/alunos/inserir">Cadastrar</a>			 
+						</div>
+					</li>
+				</ul>
+				<input class="form-control mr-sm-2" type="search" placeholder="Search"	aria-label="Search" id="txt-pesquisar" name="txt-pesquisar"/>
+				<button class="btn btn-outline-success my-2 my-sm-0" id="btn-pesquisar">Search</button>
+			</div>
+		</nav>
 	</div>
-</footer>
-</div>
+	
+	<!-- ** FOOTER ** -->
+	<div style="width: 100%" th:fragment="footer">
+	<footer class="footer" style="background-color: #5e00a3; position: fixed;  left: 0;  bottom: 0;  width: 100%; color: white;  text-align: center; height: 60px;  line-height: 60px;" >
+		<div class="container" >
+			<span style="color: #FFFFFF;">Developer: Dagson Souza Contato: <a href="mailto:dagsonmg@yahoo.com.br">dagsonmg@yahoo.com.br</a></span>		 
+		</div>
+	</footer>
+	</div>
 
-<!-- <script type="text/javascript" src="/webjars/popper.js/1.14.3/umd/popper.min.js" ></script> -->
-<!-- <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js" ></script> -->
-<script type="text/javascript" src="/webjars/jquery/3.1.1-1/jquery.min.js" ></script>
+	<script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js" ></script>
+	<script type="text/javascript" src="/webjars/popper.js/umd/popper.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>
 </body>
 </html>

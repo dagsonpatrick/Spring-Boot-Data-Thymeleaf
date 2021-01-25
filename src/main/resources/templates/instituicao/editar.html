@@ -3,14 +3,11 @@
 <head>
 <meta charset="UTF-8"></meta>
 <title>Alterar Instituição</title>
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css"/>
 </head>
 <body>
-	
 	<div th:replace="fragmentos/fragmentos :: header"></div>
-	
 	<form  class="form-horizontal" action="/instituicoes/editar" method="post" th:object="${instituicao}">
-	
 	<div class="container">	
 		<div class="row">
 			<div class="col-md-6">
@@ -28,7 +25,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
@@ -37,7 +33,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
@@ -46,12 +41,10 @@
 			</div>
 		</div>
 	</div>
-		
 	</form>
-	
 	<div th:replace="fragmentos/fragmentos :: footer"></div>
-	<script type="text/javascript" src="/webjars/popper.js/1.14.3/umd/popper.min.js" ></script>
-	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js" ></script>
-	<script type="text/javascript" src="/webjars/jquery/3.0.0/jquery.min.js" ></script>
+	<script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js" ></script>
+	<script type="text/javascript" src="/webjars/popper.js/umd/popper.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>
 </body>
 </html>
