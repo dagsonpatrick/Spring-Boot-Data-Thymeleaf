@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Home</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+<style>
+	body {
+			background-image: url('/images/fototouchrobo.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		} 
+</style>
+</head>
+<body>
+	
+	<div th:replace="fragmentos/fragmentos :: header"></div>
+	
+	<div th:replace="fragmentos/fragmentos :: footer"></div> 
+
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js" ></script>
+	
+</body>
+</html>
